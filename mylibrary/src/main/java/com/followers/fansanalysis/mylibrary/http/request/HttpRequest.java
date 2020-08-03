@@ -246,4 +246,40 @@ public class HttpRequest extends ObjectLoader {
         });
     }
 
+    /**
+     *
+     * 关注帖子
+     * @return
+     */
+
+    public Observable<JsonElement> followPost(Map<String,Object> map){
+
+        return observable(httpService.followPost(map)).map(new Func1<JsonElement,JsonElement>() {
+            @Override
+            public JsonElement call(JsonElement s) {
+
+
+                return s;
+            }
+        });
+    }
+
+    /**
+     *
+     * 点赞帖子
+     * @return
+     */
+
+    public Observable<JsonElement> likePost(Map<String,Object> map){
+
+        return observable(httpService.likePost(map)).map(new Func1<JsonElement,JsonElement>() {
+            @Override
+            public JsonElement call(JsonElement s) {
+
+
+                return s;
+            }
+        });
+    }
+
 }

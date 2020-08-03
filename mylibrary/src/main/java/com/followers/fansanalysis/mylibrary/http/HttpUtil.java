@@ -1,14 +1,18 @@
 package com.followers.fansanalysis.mylibrary.http;
 
 
+import android.text.TextUtils;
+
 import com.followers.fansanalysis.mylibrary.http.bean.AddFollowersPostBean;
 import com.followers.fansanalysis.mylibrary.http.bean.AddLikesPostBean;
 import com.followers.fansanalysis.mylibrary.http.bean.CoinsBean;
 import com.followers.fansanalysis.mylibrary.http.bean.ConsumeBean;
+import com.followers.fansanalysis.mylibrary.http.bean.FollowPostBean;
 import com.followers.fansanalysis.mylibrary.http.bean.FollowersPostListBean;
 import com.followers.fansanalysis.mylibrary.http.bean.LikesPostListBean;
 import com.followers.fansanalysis.mylibrary.http.bean.LoginBean;
 import com.followers.fansanalysis.mylibrary.http.bean.TopFollowersPost;
+import com.followers.fansanalysis.mylibrary.http.bean.TopLikesPostBean;
 import com.followers.fansanalysis.mylibrary.http.bean.UserInfoFollowersPostListBean;
 import com.followers.fansanalysis.mylibrary.http.bean.UserLikesPostBean;
 import com.followers.fansanalysis.mylibrary.http.request.HttpRequest;
@@ -147,7 +151,9 @@ public class HttpUtil {
 
         Map<String, Object> map = new HashMap<>();
         map.put("page",page);
-        map.put("user_pk",user_pk);
+        if(!TextUtils.isEmpty(user_pk)){
+            map.put("user_pk",user_pk);
+        }
         if(isTop){
             map.put("isTop",1);
         }else{
@@ -214,7 +220,11 @@ public class HttpUtil {
     public static void getLikesPostList(String user_pk,int page,boolean isTop,final HttpListener<LikesPostListBean> listener) {
         Map<String, Object> map = new HashMap<>();
         map.put("page",page);
-        map.put("user_pk",user_pk);
+        if(!TextUtils.isEmpty(user_pk)){
+
+            map.put("user_pk",user_pk);
+        }
+
         if(isTop){
             map.put("isTop",1);
         }else{
@@ -368,7 +378,7 @@ public class HttpUtil {
     }
 
     //置顶点赞帖子
-    public static void topLikesPost(String user_pk,int post_id,final HttpListener<String> listener) {
+    public static void topLikesPost(String user_pk,int post_id,final HttpListener<TopLikesPostBean> listener) {
 
         Map<String, Object> map = new HashMap<>();
         map.put("post_id",post_id);
@@ -378,6 +388,71 @@ public class HttpUtil {
             @Override
             public void success(String s) {
 
+                TopLikesPostBean topLikesPostBean = GsonUtil.format(s,TopLikesPostBean.class);
+
+                if(null != topLikesPostBean){
+
+                    listener.onSuccess(topLikesPostBean);
+                }
+
+            }
+
+            @Override
+            public void failure(String e) {
+
+                listener.onError(e);
+            }
+
+        }.post(observable);
+    }
+
+    //关注帖子
+    public static void followPost(String user_pk,int post_id,final HttpListener<FollowPostBean> listener) {
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("post_id",post_id);
+        map.put("user_pk",user_pk);
+        Observable observable = new HttpRequest().followPost(map);
+        new RequestManager() {
+            @Override
+            public void success(String s) {
+
+                FollowPostBean followPostBean=GsonUtil.format(s,FollowPostBean.class);
+
+                if(null != followPostBean){
+
+                    listener.onSuccess(followPostBean);
+                }
+
+            }
+
+            @Override
+            public void failure(String e) {
+
+                listener.onError(e);
+            }
+
+        }.post(observable);
+    }
+
+
+    //点赞帖子
+    public static void likePost(String user_pk,int post_id,final HttpListener<FollowPostBean> listener) {
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("post_id",post_id);
+        map.put("user_pk",user_pk);
+        Observable observable = new HttpRequest().likePost(map);
+        new RequestManager() {
+            @Override
+            public void success(String s) {
+
+                FollowPostBean followPostBean=GsonUtil.format(s,FollowPostBean.class);
+
+                if(null != followPostBean){
+
+                    listener.onSuccess(followPostBean);
+                }
 
             }
 

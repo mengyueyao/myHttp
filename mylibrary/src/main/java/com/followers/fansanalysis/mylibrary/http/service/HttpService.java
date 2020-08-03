@@ -62,6 +62,14 @@ public interface HttpService {
     @POST("top_likes_post")
     Observable<JsonElement> topLikesPost(@Body Map<String, Object> map);
 
+    //关注帖子
+    @POST("follow_post")
+    Observable<JsonElement> followPost(@Body Map<String, Object> map);
+
+    //点赞帖子帖子
+    @POST("like_post")
+    Observable<JsonElement> likePost(@Body Map<String, Object> map);
+
 
 
 

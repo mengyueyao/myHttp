@@ -70,6 +70,14 @@ public interface HttpService {
     @POST("like_post")
     Observable<JsonElement> likePost(@Body Map<String, Object> map);
 
+    //赞过我的人
+    @POST("like_me")
+    Observable<JsonElement> likeMe(@Body Map<String, Object> map);
+
+    //关注过我的人
+    @POST("follow_me")
+    Observable<JsonElement> followMe(@Body Map<String, Object> map);
+
 
 
 

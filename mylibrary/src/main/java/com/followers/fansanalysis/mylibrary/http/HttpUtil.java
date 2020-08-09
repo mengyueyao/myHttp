@@ -7,8 +7,10 @@ import com.followers.fansanalysis.mylibrary.http.bean.AddFollowersPostBean;
 import com.followers.fansanalysis.mylibrary.http.bean.AddLikesPostBean;
 import com.followers.fansanalysis.mylibrary.http.bean.CoinsBean;
 import com.followers.fansanalysis.mylibrary.http.bean.ConsumeBean;
+import com.followers.fansanalysis.mylibrary.http.bean.FollowMeBean;
 import com.followers.fansanalysis.mylibrary.http.bean.FollowPostBean;
 import com.followers.fansanalysis.mylibrary.http.bean.FollowersPostListBean;
+import com.followers.fansanalysis.mylibrary.http.bean.LikeMeBean;
 import com.followers.fansanalysis.mylibrary.http.bean.LikesPostListBean;
 import com.followers.fansanalysis.mylibrary.http.bean.LoginBean;
 import com.followers.fansanalysis.mylibrary.http.bean.TopFollowersPost;
@@ -453,6 +455,65 @@ public class HttpUtil {
 
                     listener.onSuccess(followPostBean);
                 }
+
+            }
+
+            @Override
+            public void failure(String e) {
+
+                listener.onError(e);
+            }
+
+        }.post(observable);
+    }
+
+
+    //赞过我的人
+    public static void likeMe(String user_pk,final HttpListener<LikeMeBean> listener) {
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("user_pk",user_pk);
+        Observable observable = new HttpRequest().likeMe(map);
+        new RequestManager() {
+            @Override
+            public void success(String s) {
+
+                LikeMeBean likeMeBean = GsonUtil.format(s,LikeMeBean.class);
+
+                if(null != likeMeBean){
+
+                    listener.onSuccess(likeMeBean);
+                }
+
+            }
+
+            @Override
+            public void failure(String e) {
+
+                listener.onError(e);
+            }
+
+        }.post(observable);
+    }
+
+
+    //关注过我的
+    public static void followMe(String user_pk,final HttpListener<FollowMeBean> listener) {
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("user_pk",user_pk);
+        Observable observable = new HttpRequest().followMe(map);
+        new RequestManager() {
+            @Override
+            public void success(String s) {
+
+                FollowMeBean followMeBean = GsonUtil.format(s,FollowMeBean.class);
+
+                if(null != followMeBean){
+
+                    listener.onSuccess(followMeBean);
+                }
+
 
             }
 

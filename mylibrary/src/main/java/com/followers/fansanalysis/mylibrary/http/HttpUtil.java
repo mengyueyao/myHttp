@@ -256,11 +256,12 @@ public class HttpUtil {
     }
 
     //添加点赞帖子
-    public static void addLikesPost(String user_pk,String desc,String image,boolean isTop,final HttpListener<AddLikesPostBean> listener) {
+    public static void addLikesPost(String user_pk,String desc,String image,String post_id,boolean isTop,final HttpListener<AddLikesPostBean> listener) {
         Map<String, Object> map = new HashMap<>();
         map.put("user_pk",user_pk);
         map.put("desc",desc);
         map.put("image",image);
+        map.put("post_id",post_id);
         if(isTop){
             map.put("isTop",1);
 

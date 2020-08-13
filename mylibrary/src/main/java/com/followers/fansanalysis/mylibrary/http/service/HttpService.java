@@ -78,6 +78,10 @@ public interface HttpService {
     @POST("follow_me")
     Observable<JsonElement> followMe(@Body Map<String, Object> map);
 
+    //google支付回调
+    @POST("googlpay_callback")
+    Observable<JsonElement> googlpay_callback(@Body Map<String, Object> map);
+
 
 
 

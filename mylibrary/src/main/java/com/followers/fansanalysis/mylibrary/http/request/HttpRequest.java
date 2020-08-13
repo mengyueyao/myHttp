@@ -320,4 +320,23 @@ public class HttpRequest extends ObjectLoader {
         });
     }
 
+
+    /**
+     *
+     * google支付回调
+     * @return
+     */
+
+    public Observable<JsonElement> googlpay_callback(Map<String,Object> map){
+
+        return observable(httpService.googlpay_callback(map)).map(new Func1<JsonElement,JsonElement>() {
+            @Override
+            public JsonElement call(JsonElement s) {
+
+
+                return s;
+            }
+        });
+    }
+
 }

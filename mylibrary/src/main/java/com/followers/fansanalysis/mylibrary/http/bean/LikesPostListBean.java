@@ -8,7 +8,7 @@ public class LikesPostListBean {
     /**
      * code : 200
      * msg : success
-     * data : [{"id":1,"userId_id":123456789,"describe":"testPost","image":"","creat_time":1596265300,"isTop":2,"top_time":2,"is_like":2,"package_name":"com.followers.boost","platform":1}]
+     * data : [{"id":3,"userId_id":6060192636,"postId":"2342235611186642568_6060192636","describe":"like","image":"","creat_time":1597297684,"isTop":1,"top_time":1597297684,"is_like":2,"package_name":"com.followers.boost","platform":1},{"id":2,"userId_id":6060192636,"postId":"2342235611186642568_6060192636","describe":"like","image":"","creat_time":1597297683,"isTop":1,"top_time":1597297683,"is_like":2,"package_name":"com.followers.boost","platform":1}]
      */
 
     private int code;
@@ -41,20 +41,22 @@ public class LikesPostListBean {
 
     public static class DataBean {
         /**
-         * id : 1
-         * userId_id : 123456789
-         * describe : testPost
+         * id : 3
+         * userId_id : 6060192636
+         * postId : 2342235611186642568_6060192636
+         * describe : like
          * image :
-         * creat_time : 1596265300
-         * isTop : 2
-         * top_time : 2
+         * creat_time : 1597297684
+         * isTop : 1
+         * top_time : 1597297684
          * is_like : 2
          * package_name : com.followers.boost
          * platform : 1
          */
 
         private int id;
-        private String userId_id;
+        private long userId_id;
+        private String postId;
         private String describe;
         private String image;
         private int creat_time;
@@ -72,12 +74,20 @@ public class LikesPostListBean {
             this.id = id;
         }
 
-        public String getUserId_id() {
+        public long getUserId_id() {
             return userId_id;
         }
 
-        public void setUserId_id(String userId_id) {
+        public void setUserId_id(long userId_id) {
             this.userId_id = userId_id;
+        }
+
+        public String getPostId() {
+            return postId;
+        }
+
+        public void setPostId(String postId) {
+            this.postId = postId;
         }
 
         public String getDescribe() {

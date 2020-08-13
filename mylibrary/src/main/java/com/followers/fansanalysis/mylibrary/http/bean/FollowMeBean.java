@@ -8,7 +8,7 @@ public class FollowMeBean {
     /**
      * code : 200
      * msg : success
-     * data : [{"id":1,"postId":36,"user_pk":123456789,"follower_userpk":123456789,"follower_username":"test3","follower_avatar":"http://www.baidu.com","followe_coins":8613,"creat_time":1596351774,"package_name":"com.followers.boost","platform":1}]
+     * data : [{"id":3,"postId":43,"user_pk":6060192636,"follower_userpk":37830561919,"follower_username":"m754610212","follower_avatar":"https://instagram.fbog15-1.fna.fbcdn.net/v/t51.2885-19/44884218_345707102882519_2446069589734326272_n.jpg?_nc_ht=instagram.fbog15-1.fna.fbcdn.net&_nc_ohc=TxAf-mrbVlQAX_fE8_N&oh=d2349cd836b6fb9cb39bbd643dd06330&oe=5F5ED20F&ig_cache_key=YW5vbnltb3VzX3Byb2ZpbGVfcGlj.2","followe_coins":12,"creat_time":1597287658,"package_name":"com.followers.boost","platform":1},{"id":2,"postId":40,"user_pk":6060192636,"follower_userpk":37830561919,"follower_username":"m754610212","follower_avatar":"https://instagram.fmex31-1.fna.fbcdn.net/v/t51.2885-19/44884218_345707102882519_2446069589734326272_n.jpg?_nc_ht=instagram.fmex31-1.fna.fbcdn.net&_nc_ohc=TxAf-mrbVlQAX_trem-&oh=435ff3a3869efc50ffc905f4e99d80a1&oe=5F5ED20F&ig_cache_key=YW5vbnltb3VzX3Byb2ZpbGVfcGlj.2","followe_coins":9,"creat_time":1597287466,"package_name":"com.followers.boost","platform":1}]
      */
 
     private int code;
@@ -41,22 +41,22 @@ public class FollowMeBean {
 
     public static class DataBean {
         /**
-         * id : 1
-         * postId : 36
-         * user_pk : 123456789
-         * follower_userpk : 123456789
-         * follower_username : test3
-         * follower_avatar : http://www.baidu.com
-         * followe_coins : 8613
-         * creat_time : 1596351774
+         * id : 3
+         * postId : 43
+         * user_pk : 6060192636
+         * follower_userpk : 37830561919
+         * follower_username : m754610212
+         * follower_avatar : https://instagram.fbog15-1.fna.fbcdn.net/v/t51.2885-19/44884218_345707102882519_2446069589734326272_n.jpg?_nc_ht=instagram.fbog15-1.fna.fbcdn.net&_nc_ohc=TxAf-mrbVlQAX_fE8_N&oh=d2349cd836b6fb9cb39bbd643dd06330&oe=5F5ED20F&ig_cache_key=YW5vbnltb3VzX3Byb2ZpbGVfcGlj.2
+         * followe_coins : 12
+         * creat_time : 1597287658
          * package_name : com.followers.boost
          * platform : 1
          */
 
         private int id;
         private int postId;
-        private int user_pk;
-        private int follower_userpk;
+        private long user_pk;
+        private long follower_userpk;
         private String follower_username;
         private String follower_avatar;
         private int followe_coins;
@@ -80,19 +80,19 @@ public class FollowMeBean {
             this.postId = postId;
         }
 
-        public int getUser_pk() {
+        public long getUser_pk() {
             return user_pk;
         }
 
-        public void setUser_pk(int user_pk) {
+        public void setUser_pk(long user_pk) {
             this.user_pk = user_pk;
         }
 
-        public int getFollower_userpk() {
+        public long getFollower_userpk() {
             return follower_userpk;
         }
 
-        public void setFollower_userpk(int follower_userpk) {
+        public void setFollower_userpk(long follower_userpk) {
             this.follower_userpk = follower_userpk;
         }
 
